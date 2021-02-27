@@ -1,6 +1,6 @@
 def jogar():
     print("_"*30)
-    print("*"*20+"JOGO DA FORCA"+"*"5)
+    print("*"*5+"JOGO DA FORCA"+"*"*5)
     print("_"*30)
 
     palavra_secreta = "banana"
@@ -14,3 +14,14 @@ def jogar():
 
     while (not enforcou and not acertou):
         chute = str(input("Qual a letra? "))
+        if chute in palavra_secreta:
+            posicao = 0
+            for letra in palavra_secreta:
+                if (chute.upper() == letra.upper()):
+                    letras_acertadas[posicao] = letra
+                posicao = posicao + 1
+        else:
+            erros = erros + 1
+        enforcou = erros == 6
+        acertou = '_' not in letras_acertadas
+        print(letras_acertadas)
